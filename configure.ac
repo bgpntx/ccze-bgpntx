@@ -22,8 +22,8 @@ dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 dnl **********************
 dnl * Boilerplate
 dnl **********************
-AC_PREREQ(2.54)
-AC_INIT([ccze], [0.2-stable], [algernon@bonehunter.rulez.org])
+AC_PREREQ([2.69])
+AC_INIT([ccze], [0.2.2], [algernon@bonehunter.rulez.org])
 AC_CONFIG_SRCDIR(src/ccze.c)
 
 AC_CONFIG_HEADERS(system.h)
@@ -40,20 +40,8 @@ AC_CHECK_TOOL(CC, cc)
 AC_PROG_CC
 
 WFLAGS=""
-WFLAGS_3X=""
 if test "x$ac_compiler_gnu" = "xyes"; then
 	WFLAGS='${WFLAGS_GCC}'
-	AC_MSG_CHECKING(whether we are using GCC 3)
-	GCCVER=$(${CC} -dumpversion 2>/dev/null)
-	case ${GCCVER} in
-		3.*)
-			WFLAGS_3X='${WFLAGS_3X}'
-			AC_MSG_RESULT(yes)
-			;;
-		*)
-			AC_MSG_RESULT(no)
-			;;
-	esac
 else
 	AC_MSG_CHECKING(whether we are using the Intel C compiler)
 	if ${CC} -V 2>&1 | head -n 1 | grep -q "Intel(R)"; then
@@ -64,7 +52,6 @@ else
 	fi
 fi
 AC_SUBST(WFLAGS)
-AC_SUBST(WFLAGS_3X)
 
 AC_PROG_CPP
 AC_PROG_INSTALL
@@ -72,17 +59,13 @@ AC_PROG_INSTALL
 dnl **********************
 dnl * Headers
 dnl **********************
-AC_HEADER_STDC
-AC_HEADER_DIRENT
-AC_CHECK_HEADERS([argp.h getopt.h netdb.h fcntl.h stddef.h])
+AC_CHECK_HEADERS([argp.h getopt.h netdb.h fcntl.h stddef.h dirent.h])
 
 dnl **********************
 dnl * Typedefs & co
 dnl **********************
 AC_C_CONST
-AC_C_VOLATILE
 AC_TYPE_SIZE_T
-AC_TYPE_SIGNAL
 
 dnl **********************
 dnl * Library functions
@@ -92,28 +75,27 @@ AC_FUNC_REALLOC
 AC_FUNC_STRFTIME
 AC_FUNC_STAT
 AC_FUNC_MEMCMP
-AC_FUNC_VPRINTF
 AC_FUNC_CLOSEDIR_VOID
 AC_CHECK_FUNCS([alphasort argp_parse asprintf getdelim getline getopt_long \
 		getsubopt memchr memset scandir strcasecmp strchr strdup \
 		strndup strstr])
 
-AC_CHECK_LIB(ncurses, initscr, [], [AC_ERROR(NCurses library not found)])
+AC_CHECK_LIB(ncurses, initscr, [], [AC_MSG_ERROR([NCurses library not found])])
 AC_CHECK_FUNC(dlopen, [], [AC_CHECK_LIB(dl, dlopen)])
 AC_CHECK_FUNC(getopt_long, [], [AC_CHECK_LIB(gnugetopt, getopt_long)])
 
-if test -z "${PCRE_CONFIG}"; then
-	AC_PATH_PROG(PCRE_CONFIG, pcre-config, no)
-fi
-AC_MSG_CHECKING(for PCRE)
-if test "${PCRE_CONFIG}" = "no"; then
-	AC_ERROR(PCRE not found)
-fi
-PCRE_CFLAGS=$($PCRE_CONFIG --cflags)
-PCRE_LIBS=$($PCRE_CONFIG --libs)
+PKG_PROG_PKG_CONFIG
+PKG_CHECK_MODULES([PCRE2], [libpcre2-8],
+	[PCRE_CFLAGS="$PCRE2_CFLAGS"
+	 PCRE_LIBS="$PCRE2_LIBS"],
+	[AC_PATH_PROG(PCRE2_CONFIG, pcre2-config, no)
+	 if test "${PCRE2_CONFIG}" = "no"; then
+		AC_MSG_ERROR([PCRE2 (libpcre2-8) not found])
+	 fi
+	 PCRE_CFLAGS=$($PCRE2_CONFIG --cflags)
+	 PCRE_LIBS=$($PCRE2_CONFIG --libs8)])
 AC_SUBST(PCRE_CFLAGS)
 AC_SUBST(PCRE_LIBS)
-AC_MSG_RESULT(found)
 
 AC_MSG_CHECKING(for suboptarg)
 AC_RUN_IFELSE(AC_LANG_PROGRAM(

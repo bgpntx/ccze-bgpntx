@@ -86,7 +86,7 @@ ccze_apm_setup (void)
 static void
 ccze_apm_shutdown (void)
 {
-  free (reg_apm);
+  pcre_free (reg_apm);
 }
 
 static int

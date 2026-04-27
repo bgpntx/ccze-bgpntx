@@ -305,19 +305,19 @@ ccze_wordcolor_setup (void)
 void
 ccze_wordcolor_shutdown (void)
 {
-  free (reg_pre);
-  free (reg_post);
-  free (reg_host);
-  free (reg_mac);
-  free (reg_email);
-  free (reg_email2);
-  free (reg_uri);
-  free (reg_size);
-  free (reg_ver);
-  free (reg_time);
-  free (reg_addr);
-  free (reg_num);
-  free (reg_sig);
-  free (reg_hostip);
-  free (reg_msgid);
+  pcre_free (reg_pre);
+  pcre_free (reg_post);
+  pcre_free (reg_host);
+  pcre_free (reg_mac);
+  pcre_free (reg_email);
+  pcre_free (reg_email2);
+  pcre_free (reg_uri);
+  pcre_free (reg_size);
+  pcre_free (reg_ver);
+  pcre_free (reg_time);
+  pcre_free (reg_addr);
+  pcre_free (reg_num);
+  pcre_free (reg_sig);
+  pcre_free (reg_hostip);
+  pcre_free (reg_msgid);
 }

@@ -158,10 +158,10 @@ ccze_icecast_setup (void)
 static void
 ccze_icecast_shutdown (void)
 {
-  free (reg_icecast);
-  free (hints_icecast);
-  free (reg_icecast_usage);
-  free (hints_icecast_usage);
+  pcre_free (reg_icecast);
+  pcre_free (hints_icecast);
+  pcre_free (reg_icecast_usage);
+  pcre_free (hints_icecast_usage);
 }
 
 static int

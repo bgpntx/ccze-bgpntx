@@ -117,8 +117,8 @@ ccze_xferlog_setup (void)
 static void
 ccze_xferlog_shutdown (void)
 {
-  free (reg_xferlog);
-  free (hints_xferlog);
+  pcre_free (reg_xferlog);
+  pcre_free (hints_xferlog);
 }
 
 static int

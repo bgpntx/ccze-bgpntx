@@ -75,7 +75,7 @@ ccze_ulogd_setup (void)
 static void
 ccze_ulogd_shutdown (void)
 {
-  free (reg_ulogd);
+  pcre_free (reg_ulogd);
 }
 
 static int

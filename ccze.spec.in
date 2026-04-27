@@ -9,11 +9,11 @@ Release: %{release}
 Vendor: Generic
 Packager: Gergely Nagy <algernon@bonehunter.rulez.org>
 URL: http://bonehunter.rulez.org/CCZE.html
-Copyright: GPL
+License: GPL
 Group: Applications/Text
 Source: ftp://bonehunter.rulez.org/pub/ccze/%{dist}/ccze-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-root
-BuildPrereq: ncurses-devel >= 5.0, pcre-devel >= 3.1
+BuildRequires: ncurses-devel, pcre2-devel, pkgconfig
 
 %description
 CCZE is a roboust and modular log colorizer, with plugins for apm,

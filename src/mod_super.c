@@ -70,8 +70,8 @@ ccze_super_setup (void)
 static void
 ccze_super_shutdown (void)
 {
-  free (reg_super);
-  free (hints_super);
+  pcre_free (reg_super);
+  pcre_free (hints_super);
 }
 
 static int

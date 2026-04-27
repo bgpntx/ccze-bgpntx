@@ -81,8 +81,8 @@ ccze_vsftpd_setup (void)
 static void
 ccze_vsftpd_shutdown (void)
 {
-  free (reg_vsftpd);
-  free (hints_vsftpd);
+  pcre_free (reg_vsftpd);
+  pcre_free (hints_vsftpd);
 }
 
 static int

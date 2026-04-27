@@ -1,3 +1,16 @@
+ccze (0.2.2-1) unstable; urgency=medium
+
+  * Modernise for Ubuntu 24.04 / GCC 13+:
+    - Port from PCRE1 to PCRE2 via thin compatibility shim
+      (src/ccze-pcre.{h,c}); upstream API kept unchanged.
+    - Switch Build-Depends to libpcre2-dev and libncurses-dev.
+    - Refresh autoconf macros, drop GCC 3 detection.
+    - Modernise debian/rules to debhelper-compat=13 with dh sequencer.
+    - Update Standards-Version to 4.6.2.
+    - Source format 3.0 (quilt).
+
+ -- Stephen Gran <sgran@debian.org>  Mon, 27 Apr 2026 10:00:00 +0000
+
 ccze (0.2.1-2) unstable; urgency=low
 
   * Add myself as Maintainer, as Gergely seems to be MIA

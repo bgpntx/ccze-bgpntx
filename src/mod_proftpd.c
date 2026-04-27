@@ -151,10 +151,10 @@ ccze_proftpd_setup (void)
 static void
 ccze_proftpd_shutdown (void)
 {
-  free (reg_proftpd_auth);
-  free (hints_proftpd_auth);
-  free (reg_proftpd_access);
-  free (hints_proftpd_access);
+  pcre_free (reg_proftpd_auth);
+  pcre_free (hints_proftpd_auth);
+  pcre_free (reg_proftpd_access);
+  pcre_free (hints_proftpd_access);
 }
 
 static int

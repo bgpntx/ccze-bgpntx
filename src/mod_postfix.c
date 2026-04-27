@@ -95,7 +95,7 @@ ccze_postfix_setup (void)
 static void
 ccze_postfix_shutdown (void)
 {
-  free (reg_postfix);
+  pcre_free (reg_postfix);
 }
 
 static int

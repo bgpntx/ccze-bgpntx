@@ -106,10 +106,10 @@ ccze_exim_setup (void)
 static void
 ccze_exim_shutdown (void)
 {
-  free (reg_exim);
-  free (hints_exim);
-  free (reg_exim_actiontype);
-  free (reg_exim_uniqn);
+  pcre_free (reg_exim);
+  pcre_free (hints_exim);
+  pcre_free (reg_exim_actiontype);
+  pcre_free (reg_exim_uniqn);
 }
 
 static int
