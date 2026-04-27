@@ -85,8 +85,8 @@ ccze_sulog_setup (void)
 static void
 ccze_sulog_shutdown (void)
 {
-  free (reg_sulog);
-  free (hints_sulog);
+  pcre_free (reg_sulog);
+  pcre_free (hints_sulog);
 }
 
 static int

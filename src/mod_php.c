@@ -64,8 +64,8 @@ ccze_php_setup (void)
 static void
 ccze_php_shutdown (void)
 {
-  free (reg_php);
-  free (hints_php);
+  pcre_free (reg_php);
+  pcre_free (hints_php);
 }
 
 static int

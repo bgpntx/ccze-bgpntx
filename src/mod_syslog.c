@@ -112,8 +112,8 @@ ccze_syslog_setup (void)
 static void
 ccze_syslog_shutdown (void)
 {
-  free (reg_syslog);
-  free (hints_syslog);
+  pcre_free (reg_syslog);
+  pcre_free (hints_syslog);
 }
 
 static int

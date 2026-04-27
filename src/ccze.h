@@ -25,7 +25,7 @@
 #ifdef HAVE_SYSTEM_H
 # include "system.h"
 #endif
-#include <pcre.h>
+#include "ccze-pcre.h"
 #include <ncurses.h>
 #include <stddef.h>
 

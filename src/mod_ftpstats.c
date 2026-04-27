@@ -91,8 +91,8 @@ ccze_ftpstats_setup (void)
 static void
 ccze_ftpstats_shutdown (void)
 {
-  free (reg_ftpstats);
-  free (hints_ftpstats);
+  pcre_free (reg_ftpstats);
+  pcre_free (hints_ftpstats);
 }
 
 static int

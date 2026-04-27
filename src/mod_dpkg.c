@@ -143,9 +143,9 @@ ccze_dpkg_setup (void)
 static void
 ccze_dpkg_shutdown (void)
 {
-  free (reg_dpkg_status);
-  free (reg_dpkg_action);
-  free (reg_dpkg_conffile);
+  pcre_free (reg_dpkg_status);
+  pcre_free (reg_dpkg_action);
+  pcre_free (reg_dpkg_conffile);
 }
 
 static int

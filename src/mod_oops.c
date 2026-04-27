@@ -94,8 +94,8 @@ ccze_oops_setup (void)
 static void
 ccze_oops_shutdown (void)
 {
-  free (reg_oops);
-  free (hints_oops);
+  pcre_free (reg_oops);
+  pcre_free (hints_oops);
 }
 
 static int

@@ -1,13 +1,20 @@
 Source: ccze
 Section: utils
-Priority: extra
+Priority: optional
 Maintainer: Stephen Gran <sgran@debian.org>
-Standards-Version: 3.7.2
-Build-Depends: libpcre3-dev, libncurses5-dev
+Standards-Version: 4.6.2
+Build-Depends: debhelper-compat (= 13),
+               libpcre2-dev,
+               libncurses-dev,
+               pkg-config,
+               autoconf,
+               automake
+Rules-Requires-Root: no
+Homepage: http://bonehunter.rulez.org/CCZE.html
 
 Package: ccze
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Replaces: colorize (<= 0.3.1-2)
 Description: A robust, modular log coloriser
  CCZE is a robust and modular log coloriser, with plugins for apm,

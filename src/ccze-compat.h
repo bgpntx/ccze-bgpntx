@@ -50,6 +50,10 @@ asprintf(char **ptr, const char *fmt, ...);
 #endif
 
 #ifndef HAVE_ARGP_PARSE
+#ifndef __error_t_defined
+typedef int error_t;
+#define __error_t_defined 1
+#endif
 struct argp_option
 {
   char *name;

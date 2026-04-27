@@ -73,8 +73,8 @@ ccze_distcc_setup (void)
 static void
 ccze_distcc_shutdown (void)
 {
-  free (reg_distcc);
-  free (hints_distcc);
+  pcre_free (reg_distcc);
+  pcre_free (hints_distcc);
 }
 
 static int

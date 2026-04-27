@@ -73,7 +73,7 @@ ccze_fetchmail_setup (void)
 static void
 ccze_fetchmail_shutdown (void)
 {
-  free (reg_fetchmail);
+  pcre_free (reg_fetchmail);
 }
 
 static int

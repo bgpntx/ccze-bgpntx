@@ -147,10 +147,10 @@ ccze_httpd_setup (void)
 static void
 ccze_httpd_shutdown (void)
 {
-  free (reg_httpd_access);
-  free (hints_httpd_access);
-  free (reg_httpd_error);
-  free (hints_httpd_error);
+  pcre_free (reg_httpd_access);
+  pcre_free (hints_httpd_access);
+  pcre_free (reg_httpd_error);
+  pcre_free (hints_httpd_error);
 }
 
 static int

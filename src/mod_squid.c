@@ -273,12 +273,12 @@ ccze_squid_setup (void)
 static void
 ccze_squid_shutdown (void)
 {
-  free (reg_squid_access);
-  free (hints_squid_access);
-  free (reg_squid_cache);
-  free (hints_squid_cache);
-  free (reg_squid_store);
-  free (hints_squid_store);
+  pcre_free (reg_squid_access);
+  pcre_free (hints_squid_access);
+  pcre_free (reg_squid_cache);
+  pcre_free (hints_squid_cache);
+  pcre_free (reg_squid_store);
+  pcre_free (hints_squid_store);
 }
 
 static int

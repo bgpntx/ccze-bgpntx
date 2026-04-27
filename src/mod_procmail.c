@@ -107,8 +107,8 @@ ccze_procmail_setup (void)
 static void
 ccze_procmail_shutdown (void)
 {
-  free (reg_procmail);
-  free (hints_procmail);
+  pcre_free (reg_procmail);
+  pcre_free (hints_procmail);
 }
 
 static int
